@@ -48,9 +48,9 @@ namespace malshinonProject.Dal
                 throw;
 
             }
-            finally{
-                connection.Close();
-            }
+            //finally{
+            //    connection.Close();
+            //}
 
         }
 
@@ -78,10 +78,7 @@ namespace malshinonProject.Dal
                 Console.WriteLine($"filed select , {ex.Message}");
                 throw;
             }
-            finally
-            {
-                connection.Close();
-            }
+            
 
         }
 

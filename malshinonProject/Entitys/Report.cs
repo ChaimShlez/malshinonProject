@@ -14,22 +14,23 @@ namespace malshinonProject.Entitys
         private DateTime ReoprtTime;
 
         private string Content;
+        private string City;
 
         public Report()
         {
         }
 
-        public Report(int reporterId, DateTime reoprtTime, string content)
+        public Report(int reporterId, DateTime reoprtTime, string content, string city)
         {
             ReporterId = reporterId;
             this.reoprtTime = reoprtTime;
             this.content = content;
-           
+            City = city; 
         }
 
         public int id
         {
-            get { return id; }
+            get { return Id; }
         }
 
       
@@ -54,6 +55,12 @@ namespace malshinonProject.Entitys
         {
             get { return Content; }
             set { Content = value; }
+        }
+
+        public string city
+        {
+            get { return City; }
+            set { City = value; }
         }
 
     }

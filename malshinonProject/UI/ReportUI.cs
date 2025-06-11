@@ -21,6 +21,7 @@ namespace malshinonProject.UI
             _login = login;
             _register = register;
             _report = report;
+            
         }
         public void MenuReport(Person ReporterPerson)
         {
@@ -40,8 +41,10 @@ namespace malshinonProject.UI
                         case 1:
                             Console.WriteLine("Please enter code name");
                             Person person = _login.Login(Console.ReadLine());
+                            Console.WriteLine(person.Id);
                             if (person.Id>0)
                             {
+                                Console.WriteLine("helo");
                                 createReport(person, ReporterPerson);
                                 IsExit = true;
 
@@ -86,13 +89,15 @@ namespace malshinonProject.UI
         private void createReport(Person person, Person reporterPerson)
         {
             Console.WriteLine("enter report");
+            Console.WriteLine("enter city");
 
             Report report = new Report
             {
-                content = Console.ReadLine()
+                content = Console.ReadLine(),
+                city= Console.ReadLine()
 
             };
-               _report.CreateReport(personReported,report, reporterPerson);
+               _report.CreateReport(person, report, reporterPerson);
         }
     }
 }

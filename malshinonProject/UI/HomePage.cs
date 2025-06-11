@@ -15,12 +15,13 @@ namespace malshinonProject.UI
         private ReportUI _reportUI;
         private ControllerLogin _login;
         private Register _register;
-
-        public HomePage(ControllerLogin login, Register register)
+        
+        public HomePage(ControllerLogin login, Register register, ReportUI reportUI)
         {
             _login = login;
             _register = register;
-            _reportUI = new ReportUI(_login, _register);
+            _reportUI = reportUI;
+           
 
 
         }

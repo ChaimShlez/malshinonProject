@@ -102,6 +102,7 @@
     <Compile Include="Controller\ControllerReport.cs" />
     <Compile Include="Controller\Register.cs" />
     <Compile Include="Dal\ConnectionWrapper.cs" />
+    <Compile Include="Dal\DalAlert.cs" />
     <Compile Include="Dal\DalLogin.cs" />
     <Compile Include="Dal\DalRegister.cs" />
     <Compile Include="Dal\DalReport.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Entitys\Report.cs" />
     <Compile Include="Enum\EnumSeverity.cs" />
     <Compile Include="Enum\EnumReporterType.cs" />
+    <Compile Include="Logic\LogicAlert.cs" />
     <Compile Include="Logic\LogicLogin.cs" />
     <Compile Include="Logic\LogicRegister.cs" />
     <Compile Include="Logic\LogicReport.cs" />

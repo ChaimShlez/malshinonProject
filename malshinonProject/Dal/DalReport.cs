@@ -24,7 +24,7 @@ namespace malshinonProject.Dal
 
         public void CreateReport(Person personRepoted, Report report, Person reporterPerson)
         {
-           long reportId= svaePerson(report, reporterPerson);
+           long reportId= svaeReport(report, reporterPerson);
 
 
             savePersonReport(reportId, personRepoted);
@@ -46,15 +46,16 @@ namespace malshinonProject.Dal
             _connectionWrapper.ExecutAlertion(sql2, parametersFromPersonReport);
         }
 
-        private long svaePerson(Report report, Person reporterPerson)
+        private long svaeReport(Report report, Person reporterPerson)
         {
-            string sql = @"INSERT INTO report (reporter_id ,content)
-                                      VALUES(@reporter_id ,@content)";
+            string sql = @"INSERT INTO report (reporter_id ,content,city)
+                                      VALUES(@reporter_id ,@content,@city)";
 
             var parameters = new Dictionary<string, object>
             {
                 {"@reporter_id" ,reporterPerson.Id },
-                {"@content" ,report.content}
+                {"@content" ,report.content},
+                {"@city" ,report.city }
 
             };
 

@@ -68,7 +68,7 @@ namespace malshinonProject.Dal
 
         public string SavePerson(Entitys.Person person)
         {
-            Console.WriteLine(person.Type);
+           
             
             string sql = @"INSERT INTO person (full_name,Code_name,phone_number,type)
                              VALUES(@FullName,@CodeName,@PhoneNumber,@Type)";

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using malshinonProject.Controller;
 using malshinonProject.Dal;
+using malshinonProject.Entitys;
 using malshinonProject.Logic;
 using malshinonProject.UI;
 
@@ -19,12 +20,18 @@ namespace malshinonProject
             LogicLogin logic = new LogicLogin(dal);
             ControllerLogin login = new ControllerLogin(logic);
 
+            DalReport dalReport = new DalReport(connection);
+            LogicReport logicReport = new LogicReport(dalReport);
+            ControllerReport controllerReport = new ControllerReport(logicReport);
 
             DalRegister dalRegister = new DalRegister(connection);
             LogicRegister logicRegister = new LogicRegister(dalRegister);
             Register register = new Register(logicRegister);
 
-            HomePage homePage = new HomePage(login, register);
+            Report report = new Report();
+            ReportUI reportUI = new ReportUI(login,register, controllerReport);
+
+            HomePage homePage = new HomePage(login, register, reportUI);
 
             homePage.Menu();
         }
