@@ -23,5 +23,12 @@ namespace malshinonProject.Logic
             
             return _dalLogin.Login(codeName);
         }
+
+        public Person LoginAdmin(string codeName)
+        {
+
+
+            return _dalLogin.LoginAdmin(codeName);
+        }
     }
 }

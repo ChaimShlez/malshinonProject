@@ -29,11 +29,19 @@ namespace malshinonProject
             Register register = new Register(logicRegister);
 
             Report report = new Report();
-            ReportUI reportUI = new ReportUI(login,register, controllerReport);
+            DalAlert dalAlert = new DalAlert(connection);
+            LogicAlert logicAlert = new LogicAlert(dalAlert);
+            ControllerAlert controlleerAlert = new ControllerAlert(logicAlert);
 
-            HomePage homePage = new HomePage(login, register, reportUI);
+        ReportUI reportUI = new ReportUI(login,register, controllerReport);
+            AnalysisUI analysisUI = new AnalysisUI(controlleerAlert);
+
+            HomePage homePage = new HomePage(login, register, reportUI, analysisUI);
 
             homePage.Menu();
+
+
+            
         }
     }
 }

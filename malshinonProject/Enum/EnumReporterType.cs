@@ -8,6 +8,6 @@ namespace malshinonProject.Enum
 {
     internal enum EnumReporterType
     {
-        reporter,reported
+        reporter,reported,admin
     }
 }

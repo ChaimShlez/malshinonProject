@@ -42,7 +42,7 @@ namespace malshinonProject.Dal
                 return cmd.LastInsertedId;
 
             }
-            catch (Exception ex)
+            catch (MySqlException  ex)
             {
                 Console.WriteLine($"filed alertion , {ex.Message}");
                 throw;
@@ -73,7 +73,7 @@ namespace malshinonProject.Dal
                 }
                 return cmd.ExecuteReader(CommandBehavior.CloseConnection);
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
                 Console.WriteLine($"filed select , {ex.Message}");
                 throw;

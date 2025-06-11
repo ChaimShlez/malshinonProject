@@ -33,7 +33,7 @@ namespace malshinonProject.Logic
         public string RegisterPerson(Entitys.Person person)
         {
 
-            //validatePerson(person, phone);
+            validatePerson(person);
             string codeName = "";
             bool isExistPhoneNumberInDB = false;
             if (person.Type == EnumReporterType.reported)
@@ -59,13 +59,17 @@ namespace malshinonProject.Logic
             return codeName;
         }
 
-        //private void validatePerson(Entitys.Person person, string phone)
-        //{
-        //    if (person.PhoneNumber == phone)
-        //    {
-        //        throw new Exception($"phone is failed{person.PhoneNumber} ");
-        //    }
-        //}
+        private void validatePerson(Entitys.Person person)
+        {
+            if (person.PhoneNumber.Length <10)
+            {
+                throw new Exception($"The number is too short : {person.PhoneNumber} ");
+            }
+            if (person.PhoneNumber[0]!=0 || person.PhoneNumber[1] != 5)
+            {
+                throw new Exception($"The beginning of the number is incorrect : {person.PhoneNumber} ");
+            } 
+        }
 
         public string savePerson(Entitys.Person person)
         {

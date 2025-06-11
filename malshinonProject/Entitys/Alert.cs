@@ -29,13 +29,14 @@ namespace malshinonProject.Entitys
             City = city;
         }
 
-        public Alert(int report_id, DateTime alertTime, EnumSeverity severity, string message, int person_id)
+        public Alert(int report_id, DateTime alertTime, EnumSeverity severity, string message, int person_id,string city)
         {
-            this.report_id = report_id;
-            this.alertTime = alertTime;
-            this.severity = severity;
-            this.message = message;
-            this.person_id = person_id;
+            ReportId = report_id;
+            AlertTime = alertTime;
+            Severity = severity;
+            Message = message;
+            PersonId = person_id;
+            City = city;
         }
 
         public Alert()
@@ -92,8 +93,12 @@ namespace malshinonProject.Entitys
             set { City = value; }
 
         }
+
+        public override string ToString()
+        {
+            return $"Alert ReportId={ReportId}, AlertTime={AlertTime}, Severity={Severity}, Message={Message}, PersonId={PersonId}, City={City}";
+        }
     }
 
 
-    
-}
+ }

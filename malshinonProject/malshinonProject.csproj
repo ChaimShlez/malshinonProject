@@ -98,11 +98,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ControllerAlert.cs" />
     <Compile Include="Controller\ControllerLogin.cs" />
     <Compile Include="Controller\ControllerReport.cs" />
     <Compile Include="Controller\Register.cs" />
     <Compile Include="Dal\ConnectionWrapper.cs" />
     <Compile Include="Dal\DalAlert.cs" />
+    <Compile Include="Dal\DalAnalysis.cs" />
     <Compile Include="Dal\DalLogin.cs" />
     <Compile Include="Dal\DalRegister.cs" />
     <Compile Include="Dal\DalReport.cs" />
@@ -113,11 +115,13 @@
     <Compile Include="Enum\EnumSeverity.cs" />
     <Compile Include="Enum\EnumReporterType.cs" />
     <Compile Include="Logic\LogicAlert.cs" />
+    <Compile Include="Logic\LogicAnalysis.cs" />
     <Compile Include="Logic\LogicLogin.cs" />
     <Compile Include="Logic\LogicRegister.cs" />
     <Compile Include="Logic\LogicReport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\AnalysisUI.cs" />
     <Compile Include="UI\HomePage.cs" />
     <Compile Include="UI\ReportUI.cs" />
   </ItemGroup>

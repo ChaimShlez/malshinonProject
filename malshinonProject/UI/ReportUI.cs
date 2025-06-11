@@ -42,7 +42,7 @@ namespace malshinonProject.UI
                             Console.WriteLine("Please enter code name");
                             Person person = _login.Login(Console.ReadLine());
                             Console.WriteLine(person.Id);
-                            if (person.Id>0)
+                            if (person!=null)
                             {
                                 Console.WriteLine("helo");
                                 createReport(person, ReporterPerson);

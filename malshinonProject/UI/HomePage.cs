@@ -11,17 +11,17 @@ namespace malshinonProject.UI
 {
     internal class HomePage
     {
-
+        private AnalysisUI _analysisUI;
         private ReportUI _reportUI;
         private ControllerLogin _login;
         private Register _register;
         
-        public HomePage(ControllerLogin login, Register register, ReportUI reportUI)
+        public HomePage(ControllerLogin login, Register register, ReportUI reportUI AnalysisUI analysisUI)
         {
             _login = login;
             _register = register;
             _reportUI = reportUI;
-           
+            _analysisUI = analysisUI;
 
 
         }
@@ -33,8 +33,9 @@ namespace malshinonProject.UI
 
             while (!IsExit)
             {
-                Console.WriteLine("Please enter 1 if you want enter from system  \n" +
-                    "enter 2 if you want register from system ");
+                Console.WriteLine("1. Entry  to the system\n" +
+                                  "2. Register to the system" +
+                                  "3. Entry to admin ");
                 int.TryParse(Console.ReadLine(), out choice);
                 
                
@@ -49,7 +50,7 @@ namespace malshinonProject.UI
                             Console.WriteLine("Please enter code name");
                             Person person = _login.Login(Console.ReadLine());
 
-                            if (person.Id >0)
+                            if (person!=null)
                             {
                                 _reportUI.MenuReport(person);
                                 IsExit = true;
@@ -72,6 +73,16 @@ namespace malshinonProject.UI
                            string codeName = _register.RegisterPerson(person);
                             Console.WriteLine($"The code name : {codeName}");
                             IsExit = true; 
+                            break;
+                        case 3:
+                            Console.WriteLine("Please enter code name");
+                            Person personAdmin = _login.LoginAdmin(Console.ReadLine());
+
+                            if (personAdmin != null)
+                            {
+                                GetAnalysis();
+                                IsExit = true;
+                            }
                             break;
 
                         default:

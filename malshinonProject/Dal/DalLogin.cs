@@ -51,5 +51,39 @@ namespace malshinonProject.Dal
             
         }
 
+        public Person LoginAdmin(string codeName)
+        {
+            Person person = null;
+            string sql = @"SELECT * FROM person WHERE code_name = @code_name AND type =admin";
+            var param = new Dictionary<string, object>
+            {
+               { "@code_name", codeName }
+             };
+
+            var reader = _connectionWrapper.ExecuteSelect(sql, param);
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    person = new Person
+                    {
+                        Id = reader.GetInt32("Id"),
+                        FullName = reader.GetString("full_name"),
+                        CodeName = reader.GetString("code_name"),
+                        PhoneNumber = reader.GetString("phone_number"),
+
+                    };
+
+
+                }
+                return person;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
     }
 }

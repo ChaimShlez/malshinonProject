@@ -17,4 +17,12 @@ internal class ControllerLogin
        
         return _logicLogin.Login(codeName);
     }
+
+
+    public Person LoginAdmin(string codeName)
+    {
+
+
+        return _logicLogin.LoginAdmin(codeName);
+    }
 }
