@@ -1,33 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using malshinonProject.Controller;
+﻿using malshinonProject.Controller;
 using malshinonProject.Entitys;
+using System.Collections.Generic;
+using System;
 
-namespace malshinonProject.UI
+internal class AnalysisUI
 {
-    internal class AnalysisUI
+    private ControllerAlert _controlleerAlert;
+
+    public AnalysisUI(ControllerAlert controlleerAlert)
     {
-        private ControllerAlert _controlleerAlert;
+        _controlleerAlert = controlleerAlert;
+    }
 
-        public AnalysisUI(ControllerAlert controlleerAlert)
+    public void GetAnalysis()
+    {
+        List<Alert> listAlert = GetAllAlerts();
+
+        foreach (var alert in listAlert)
         {
-            _controlleerAlert = controlleerAlert;
+            Console.WriteLine(alert);
         }
 
-        public void GetAnalysis()
+        List<PersonReportAverageDTO> averages = GetAverages();
+        foreach (var avg in averages)
         {
-           
-           List<Alert>alerts = _controlleerAlert.GetAllAlerts();
-
-
-           foreach(var item in alerts)
-           {
-                Console.WriteLine(item);
-           }
-
+            Console.WriteLine($"{avg.FullName} ({avg.CodeName}): {avg.Average:F2}");
         }
+    }
+
+    private List<Alert> GetAllAlerts()
+    {
+        return _controlleerAlert.GetAllAlerts();
+    }
+
+    private List<PersonReportAverageDTO> GetAverages()
+    {
+        return _controlleerAlert.GetPersonByAverage();
     }
 }

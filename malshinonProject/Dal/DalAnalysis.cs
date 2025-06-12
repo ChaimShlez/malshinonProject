@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Bogus;
 using malshinonProject.Entitys;
 using malshinonProject.UI;
+using MySqlX.XDevAPI.Common;
 using static Mysqlx.Error.Types;
 
 namespace malshinonProject.Dal
@@ -131,6 +132,36 @@ namespace malshinonProject.Dal
                 };
 
             _connectionWrapper.ExecutAlertion(sql, parametrs);
+        }
+
+
+
+        public List<PersonReportAverageDTO> GetPersonByAverage()
+        {
+            string sql = @"SELECT person.full_name ,person.code_name, AVG(LENGTH(report.content)) AS  ""average""
+                        FROM report 
+                       JOIN person
+                       ON report.reporter_id=person.id
+                     GROUP BY report.reporter_id
+                      HAVING average >100";
+
+            List<PersonReportAverageDTO> listDto = new List<PersonReportAverageDTO>();
+            var reader = _connectionWrapper.ExecuteSelect(sql);
+
+            while (reader.Read())
+            {
+                var personReportAverageDTO = new PersonReportAverageDTO
+                {
+                    FullName = reader["full_name"].ToString(),
+                    CodeName = reader["code_name"].ToString(),
+                    Average = Convert.ToDouble(reader["average"])
+                };
+
+                listDto.Add(personReportAverageDTO); 
+            }
+
+            
+            return listDto; 
         }
     }
 }

@@ -111,6 +111,7 @@
     <Compile Include="Entitys\Alert.cs" />
     <Compile Include="Entitys\Person.cs" />
     <Compile Include="Entitys\PersonReport.cs" />
+    <Compile Include="Entitys\PersonReportAverageDTO.cs" />
     <Compile Include="Entitys\Report.cs" />
     <Compile Include="Enum\EnumSeverity.cs" />
     <Compile Include="Enum\EnumReporterType.cs" />

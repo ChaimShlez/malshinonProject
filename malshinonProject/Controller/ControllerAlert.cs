@@ -23,5 +23,12 @@ namespace malshinonProject.Controller
             List<Alert> alrets = _logicAlert.GetAllAlerts();
             return alrets;
         }
+
+
+        public List<PersonReportAverageDTO> GetPersonByAverage()
+        {
+            List <PersonReportAverageDTO> list= _logicAlert.GetPersonByAverage();
+            return list;
+        }
     }
 }

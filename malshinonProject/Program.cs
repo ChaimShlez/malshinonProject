@@ -30,7 +30,8 @@ namespace malshinonProject
 
             Report report = new Report();
             DalAlert dalAlert = new DalAlert(connection);
-            LogicAlert logicAlert = new LogicAlert(dalAlert);
+            DalAnalysis dalAnalysis = new DalAnalysis(connection);
+            LogicAlert logicAlert = new LogicAlert(dalAlert , dalAnalysis);
             ControllerAlert controlleerAlert = new ControllerAlert(logicAlert);
 
         ReportUI reportUI = new ReportUI(login,register, controllerReport);
@@ -38,6 +39,9 @@ namespace malshinonProject
 
             HomePage homePage = new HomePage(login, register, reportUI, analysisUI);
 
+            DalAnalysis analysis = new DalAnalysis(connection);
+            LogicAnalysis logicAnalysis = new LogicAnalysis(analysis);
+            logicAnalysis.runByTimeZon();
             homePage.Menu();
 
 

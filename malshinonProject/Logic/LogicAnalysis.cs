@@ -11,11 +11,11 @@ namespace malshinonProject.Logic
     internal class LogicAnalysis
     {
 
-        private DalAnalysis _dalAlert;
+        private DalAnalysis _dalAnalsyis;
 
-        public LogicAnalysis(DalAnalysis dalAlert)
+        public LogicAnalysis(DalAnalysis dalAnalsyis)
         {
-            _dalAlert = dalAlert;
+            _dalAnalsyis = dalAnalsyis;
         }
 
         public void runByTimeZon()
@@ -60,33 +60,34 @@ namespace malshinonProject.Logic
 
         public void CreateAlertFromDangerousCity()
         {
-            Alert alert = _dalAlert.CreateAlertFromDangerousCity();
+            Alert alert = _dalAnalsyis.CreateAlertFromDangerousCity();
             string messageFromCity= "This city appeared in a high number of reports";
             alert = new Alert(alert.report_id, alert.severity, messageFromCity, alert.person_id, alert.city);
-            _dalAlert.saveAlert(alert);
+            _dalAnalsyis.saveAlert(alert);
         }
         public void CreateAlertFromDangerousPerson()
         {
-            Alert alert = _dalAlert.CreateAlertFromDangerousPerson();
+            Alert alert = _dalAnalsyis.CreateAlertFromDangerousPerson();
             string message = GetMeesage(alert);
 
             alert = new Alert(alert.report_id,alert.severity, message, alert.person_id,alert.city);
-            _dalAlert.saveAlert(alert);
+            _dalAnalsyis.saveAlert(alert);
         }
 
         public void CreateAlertFromDangerousReprot()
         {
-            Alert alert = _dalAlert.CreateAlertFromDangerousReport();
+            Alert alert = _dalAnalsyis.CreateAlertFromDangerousReport();
             string message = GetMeesage(alert);
 
             alert = new Alert(alert.report_id, alert.severity, message, alert.person_id, alert.city);
-            _dalAlert.saveAlert(alert);
+            _dalAnalsyis.saveAlert(alert);
         }
-
-        public void AnalysisManager()
+        
+        private void AnalysisManager()
         {
             CreateAlertFromDangerousCity();
             CreateAlertFromDangerousPerson();
+            CreateAlertFromDangerousReprot();
         }
     }
 }

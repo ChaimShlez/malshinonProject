@@ -16,7 +16,7 @@ namespace malshinonProject.UI
         private ControllerLogin _login;
         private Register _register;
         
-        public HomePage(ControllerLogin login, Register register, ReportUI reportUI AnalysisUI analysisUI)
+        public HomePage(ControllerLogin login, Register register, ReportUI reportUI, AnalysisUI analysisUI)
         {
             _login = login;
             _register = register;
@@ -34,8 +34,8 @@ namespace malshinonProject.UI
             while (!IsExit)
             {
                 Console.WriteLine("1. Entry  to the system\n" +
-                                  "2. Register to the system" +
-                                  "3. Entry to admin ");
+                                  "2. Register to the system\n" +
+                                  "3. Admin login ");
                 int.TryParse(Console.ReadLine(), out choice);
                 
                
@@ -80,7 +80,7 @@ namespace malshinonProject.UI
 
                             if (personAdmin != null)
                             {
-                                GetAnalysis();
+                                _analysisUI.GetAnalysis();
                                 IsExit = true;
                             }
                             break;
